@@ -1,0 +1,7 @@
+.padding
+{
+	background-image: url(Fondo.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
