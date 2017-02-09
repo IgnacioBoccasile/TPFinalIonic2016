@@ -5,3 +5,8 @@
     -moz-background-size: cover;
     background-size: cover;
 }
+
+.c {
+  font: oblique bold 120% cursive;
+
+}
