@@ -2,9 +2,9 @@
 juego online, Generador de desafíos / batalla naval
 
 # Alumno
-Curso: 4°A.
-Legajo: 103482.
-Apellido: Boccasile.
+Curso: 4°A /
+Legajo: 103482 /
+Apellido: Boccasile /
 Nombre: Ignacio Nahuel.
 
 # Proyecto
