@@ -1,4 +1,0 @@
-SIGA LOS SIGUIENTES PASOS:
-
-1) Añadir plataforma android en consola: ionic platform add android.
-
