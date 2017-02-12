@@ -1,0 +1,5 @@
+1) tener driver correspondiente para celular.
+2) ionic platform add android.
+3) cordova plugin add https://github.com/SidneyS/cordova-plugin-nativeaudio.git
+4) cordova plugin add cordova-plugin-vibration
+5) bower install ngCordova

@@ -1,5 +1,48 @@
-<ion-view view-title="Playlist">
-  <ion-content>
-    <h1>Playlist</h1>
-  </ion-content>
-</ion-view>
+<div class="fondoLogin">
+</br>
+<center><ion-spinner  icon="bubbles" class="spinner spinner-energized" ng-if="unabandera==true" ></ion-spinner></center>
+<div ng-if="unabandera==false">
+<div class="animated bounceInRight">
+    
+  <div align="center"><img src="img/ELCANDADO.png" width="50" height="50"></img><h4><font color="white">COMPLETE LOS CAMPOS PARA CONTINUAR!!</font></h4></div>
+  </div>
+  </br>
+  <div class="animated bounceInLeft">
+  <form id="FormLogin" name="FormLogin" ng-if="!Funciona" enctype="multipart/form-data" novalidate>
+      <div class="list">
+        <label class="item item-input" align="center">
+          <span class="input-label"><img src="img/Username.png" width="20" height="20"></img><br>Usuario</span>
+          <input name="username" type="text" ng-model="loginData.username" value="" required> 
+          <span ng-if="!FormLogin.username.$invalid">✔&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+       
+        </label>
+        <span ng-if="FormLogin.username.$invalid && FormLogin.username.$dirty"><font color="red">*Este campo es requerido</font></span>
+
+        <label class="item item-input">
+          <span class="input-label"><img src="img/Clave.png" width="20" height="20"></img><br>Clave</span>
+          <input  name="password" type="password" ng-model="loginData.password" value="" required> 
+          <span ng-if="!FormLogin.password.$invalid">✔&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+          <br>
+        </label>
+        <span ng-if="FormLogin.password.$invalid && FormLogin.password.$dirty"><font color="red">*Este campo es requerido</font></span>
+
+        <label style="color:red;" ng-if="NoFunciona">
+            Usuario o Clave Incorrecta
+        </label>
+
+      <label class="item">
+        <button ng-if="!FormLogin.$invalid" ng-click="Login()" class="botonLogin"><div align="center"><img src="img/CandadoLogin.png" width="20" height="20"></img> &nbsp Iniciar Sesión &nbsp <img src="img/CandadoLogin.png" width="20" height="20"></img></div></button>
+      </label><br>
+    <center><ion-spinner  icon="bubbles" class="spinner spinner-energized" ng-if="Funciona==false" ></ion-spinner></center><br>
+             
+
+    </form>
+      <div >
+       <input type="button" class="button button-dark" value="Soy el Jugador '1'"  ng-click="Acceso('jugadoruno@hotmail.com', '123456')">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type="button" class="button button-dark" value="Soy el Jugador '2'"  ng-click="Acceso('jugadordos@hotmail.com', '123456')">
+      </div>
+
+  </div>
+  </div>
+  </div>
+</div>

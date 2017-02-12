@@ -1,4 +1,12 @@
 /* Empty. Add your own CSS if you like */
+.fondoLogin
+{
+	background-image: url(../img/FondoLogin.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+	text-align: center;
+}
 .c {
   font: oblique bold 120% cursive;
 
