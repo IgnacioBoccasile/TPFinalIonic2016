@@ -8,7 +8,8 @@ angular.module('starter', [
 'crearDesafio.controllers',
 'desafiosCreados.controllers',
 'desafiosDisponibles.controllers',
-'usuarios.service'])
+'usuarios.service',
+'creditos.service'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

@@ -1,5 +1,21 @@
 <ion-view view-title="Cargar Crédito">
   <ion-content class="paddingCredito" scroll="false">
+   <br>
+  <center><ion-spinner  icon="bubbles" class="spinner spinner-energized" ng-if="banderila==true" ></ion-spinner></center>
+  <div align="center" class="animated bounceInLeft" ng-if="banderila==false">
+  <select ng-model="carga.id">
+          <option value="">Seleccione cantidad a cargar..</option>
+          <option ng-repeat="credito in ListadoCreditos" value={{credito.$id}}>{{credito.valor}}</option>
+        </select>
+		<br><br>
+
+         </center>   <div ng-show="carga.id" align="center" class="animated bounceInLeft">
+              <img ng-src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{carga.id}}" width="150" height="150" />
+              <br><br>
+                 <button class="button button-large button-dark" ng-click="Escanear()">Escanear Código QR
+                  </button>
+              <br><br>
+            </div></center></div>
   </ion-content>
 </ion-view>
 

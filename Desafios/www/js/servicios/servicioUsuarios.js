@@ -6,6 +6,14 @@ angular.module('usuarios.service', ["firebase"])
             
             this.ref = firebase.database().ref('Usuarios/');
             this.arrayUsuarios = $firebaseArray(this.ref);
+			
+			
+           this.TraerTodos= function(){
+                    return this.arrayUsuarios.$loaded().then(function(datos){
+                        console.log(datos);
+                        return datos;
+                    })
+                };
          
             this.Agregar = function(usuario){
                     var refUsuarios = firebase.database().ref().child('Usuarios/' + usuario.id);
@@ -22,5 +30,11 @@ angular.module('usuarios.service', ["firebase"])
                         return datos.$getRecord(id);
                     })
                 };
+				this.Modificar = function(index){
+                    this.arrayUsuarios.$save(index).then(function(ref){
+                        var id = ref.key;
+                        console.log("El usuario de ID: " + id + " fue modificado exitosamente!!");
+                   })
+             };
         }])
 ;
