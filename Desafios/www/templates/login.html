@@ -12,7 +12,7 @@
       <div class="list">
         <label class="item item-input" align="center">
           <span class="input-label"><img src="img/Username.png" width="20" height="20"></img><br>Usuario</span>
-          <input name="username" type="text" ng-model="loginData.username" value="" required> 
+          <input name="username" type="email" ng-model="loginData.username" value="" required> 
           <span ng-if="!FormLogin.username.$invalid">✔&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
        
         </label>
@@ -38,8 +38,10 @@
 
     </form>
       <div >
-       <input type="button" class="button button-dark" value="Soy el Jugador '1'"  ng-click="Acceso('jugadoruno@hotmail.com', '123456')">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <input type="button" class="button button-dark" value="Soy el Jugador '2'"  ng-click="Acceso('jugadordos@hotmail.com', '123456')">
+       <input type="button" class="button button-dark" value="Jugador 1"  ng-click="Acceso('jugadoruno@hotmail.com', '123456')">
+	   <input type="button" class="button button-positive" value="Registrarse" ng-click="Registro()">
+        <input type="button" class="button button-dark" value="Jugador 2"  ng-click="Acceso('jugadordos@hotmail.com', '123456')">
+		
       </div>
 
   </div>

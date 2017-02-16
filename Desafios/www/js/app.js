@@ -1,10 +1,14 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'autor.controllers', 'login.controllers', 'menu.controllers'])
+angular.module('starter', [
+'ionic', 
+'autor.controllers', 
+'login.controllers', 
+'menu.controllers', 
+'perfil.controllers',
+'cargarCredito.controllers',
+'crearDesafio.controllers',
+'desafiosCreados.controllers',
+'desafiosDisponibles.controllers',
+'usuarios.service'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -31,11 +35,42 @@ angular.module('starter', ['ionic', 'autor.controllers', 'login.controllers', 'm
     templateUrl: 'templates/menu.html',
     controller: 'MenuCtrl'
   })
-  .state('app.search', {
-    url: '/search',
+  .state('app.cargarCredito', {
+    url: '/cargarCredito',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/cargarCredito.html',
+		controller: 'CargarCreditoCtrl'
+      }
+    }
+  })
+  
+  .state('app.crearDesafio', {
+    url: '/crearDesafio',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/crearDesafio.html',
+		controller: 'CrearDesafioCtrl'
+      }
+    }
+  })
+  
+  .state('app.desafiosCreados', {
+    url: '/desafiosCreados',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/desafiosCreados.html',
+		controller: 'DesafiosCreadosCtrl'
+      }
+    }
+  })
+  
+  .state('app.desafiosDisponibles', {
+    url: '/desafiosDisponibles',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/desafiosDisponibles.html',
+		controller: 'DesafiosDisponiblesCtrl'
       }
     }
   })
@@ -49,11 +84,12 @@ angular.module('starter', ['ionic', 'autor.controllers', 'login.controllers', 'm
 	  
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.perfil', {
+      url: '/perfil',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/perfil.html',
+		  controller: 'PerfilCtrl'
         }
       }
     })

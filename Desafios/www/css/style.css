@@ -12,8 +12,43 @@
 
 }
 
-.padding{
-	background-image: url(Fondo.jpg);
+.paddingAutor{
+	background-image: url(FondoAutor.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.paddingPerfil{
+	background-image: url(FondoPerfil.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.paddingCredito{
+	background-image: url(FondoCargar.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.paddingCrearDesafio{
+	background-image: url(FondoCrear.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.paddingDesafiosCreados{
+	background-image: url(FondoDesafiosCreados.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.paddingDesafiosDisponibles{
+	background-image: url(FondoDesafiosDisponibles.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;

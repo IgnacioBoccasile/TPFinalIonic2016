@@ -1,0 +1,31 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      c:\Program Files\nodejs\node.exe c:\Users\Nacho\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] CLI Version:  3.2.2
+[debug] Platform:     win32
+[debug] Node Version: v6.5.0
+[debug] Time:         Wed Feb 15 2017 23:23:11 GMT-0300 (Hora estándar de Argentina)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/idpM0WxK6i-DqWl4Vdf3O5aE-9wzgf_juGRa9Q_U_LxYaKqYwBi0hg1cB8bp6T6p',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Feb 15 2017 23:23:11 GMT-0300 (Hora estándar de Argentina)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/desafiostp  
+ Wed Feb 15 2017 23:23:16 GMT-0300 (Hora estándar de Argentina)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/desafiostp/tokens  
+ Wed Feb 15 2017 23:23:21 GMT-0300 (Hora estándar de Argentina)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'desafiostp'...
+[info] 
+[info] i  deploying database, hosting
+[info] +  database: rules ready to deploy.
+[info] i  hosting: preparing public directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/desafiostp/uploads/-Kd3ipjvPAEiX6ChePQF?fileCount=343&message=  
+ Wed Feb 15 2017 23:23:41 GMT-0300 (Hora estándar de Argentina)

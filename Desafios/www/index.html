@@ -6,7 +6,7 @@
     <title></title>
 
     <link rel="manifest" href="manifest.json">
-	<link rel="icon" type="image/png" sizes="96x96" href="img/Naipe.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="img/PC.png">
 
     <!-- un-comment this code to enable service worker
     <script>
@@ -32,10 +32,21 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
-    <script src="js/controlMenu.js"></script>
-	<script src="js/controlAutor.js"></script>
-	<script src="js/controlLogin.js"></script>
+    <script src="js/controladores/controlMenu.js"></script>
+	<script src="js/controladores/controlAutor.js"></script>
+	<script src="js/controladores/controlLogin.js"></script>
+	<script src="js/controladores/controlPerfil.js"></script>
+	<script src="js/controladores/controlCargarCredito.js"></script>
+	<script src="js/controladores/controlCrearDesafio.js"></script>
+	<script src="js/controladores/controlDesafiosCreados.js"></script>
+	<script src="js/controladores/controlDesafiosDisponibles.js"></script>
+	<script src="js/servicios/servicioUsuarios.js"></script>
+	
   </head>
+  
+  <script src="lib/angular-timer/dist/angular-timer.min.js"></script>
+  <script src="lib/moment/moment.js"></script>
+  <script src="lib/humanize-duration/humanize-duration.js"></script>
   
   <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
