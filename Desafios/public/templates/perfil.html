@@ -1,9 +1,9 @@
-<ion-view view-title="Datos de su Perfil">
+<ion-view view-title="Datos del Perfil">
   <ion-content scroll="false" class="paddingPerfil">
   <br>
 <center><ion-spinner  icon="bubbles" class="spinner spinner-energized" ng-if="banderola==true" ></ion-spinner></center>
    <div align="center" class="animated bounceInRight" ng-if="banderola==false">
-        <img src="img/Gente.png" width="100" height="100"></img><br><font color="black" class="c">Su correo es: {{usuario.nombre}}<br></br><img src="img/Plata.png" width="100" height="70"></img></br><font color="red">Usted dispone de ${{usuario.credito}} de saldo.</font></br></br></font></br>
+        <img src="img/Gente.png" width="100" height="100"></img><br><h4><font color="black" class="c">Su correo es: {{usuario.nombre}}</font></h4><br></br><img src="img/Plata.png" width="100" height="70"></img></br><h4><font color="green" class="c">Usted dispone de ${{usuario.credito}} de saldo.</font></h4></br></br></br>
 </div>
   </ion-content>
 

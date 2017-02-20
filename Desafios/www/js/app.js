@@ -8,8 +8,10 @@ angular.module('starter', [
 'crearDesafio.controllers',
 'desafiosCreados.controllers',
 'desafiosDisponibles.controllers',
+'aceptarDesafio.controllers',
 'usuarios.service',
-'creditos.service'])
+'creditos.service',
+'desafios.service'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -72,6 +74,16 @@ angular.module('starter', [
       'menuContent': {
         templateUrl: 'templates/desafiosDisponibles.html',
 		controller: 'DesafiosDisponiblesCtrl'
+      }
+    }
+  })
+  
+  .state('app.aceptarDesafio', {
+    url: '/desafioAceptar/:desafio',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/aceptarDesafio.html',
+        controller:'AceptarDesafioCtrl'
       }
     }
   })

@@ -54,6 +54,13 @@
     background-size: cover;
 }
 
+.paddingAceptarDesafio{
+	background-image: url(FondoAceptarDesafio.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
 .it{
 	background-color: red !important;
 }
