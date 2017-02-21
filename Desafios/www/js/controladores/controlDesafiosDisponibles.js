@@ -47,7 +47,7 @@ angular.module('desafiosDisponibles.controllers', ['ngCordova'])
 		({
 			title: 'Por favor, revise su conexión..',
 			
-            okType: 'button-dark'
+            okType: 'button-assertive'
 		});
 	}
 
@@ -97,12 +97,20 @@ angular.module('desafiosDisponibles.controllers', ['ngCordova'])
 				{
 					$ionicPopup.alert
 					({
-						title: 'Nadie aceptó su desafío!!',
-						
-						template: 'Se le reintegra a usted el monto apostado..',
+						title: 'Nadie aceptó su desafío, se le reintegra a usted el monto apostado..',
 						
 						okType: 'button-assertive'
 					});
+					
+					try
+					{
+						$cordovaNativeAudio.play('Nadie');
+					}
+		
+					catch(e)
+					{
+						console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+					}
 				}
 			}
 			
@@ -114,11 +122,11 @@ angular.module('desafiosDisponibles.controllers', ['ngCordova'])
 					{
 						var confirmPopup = $ionicPopup.confirm
 						({
-							title: 'Tiempo del desafío terminado: ',
+							title: 'Tiempo del desafío terminado: presione "OK" si ha ganado el otro jugador, o "Cancel" si el ganador fue usted',
 							
-							template: 'Presione "OK" si ha ganado el otro jugador, o "Cancel" si el ganador fue usted',
+							okType: 'button-balanced',
 							
-							okType: 'button-balanced'
+							cancelType: 'button-positive'
 						});
 
 						confirmPopup.then(function(res) 
@@ -127,6 +135,47 @@ angular.module('desafiosDisponibles.controllers', ['ngCordova'])
 							{
 								servicioUsuarios.BuscarPorId(desafio.jugador).then(function(respuesta)
 								{
+									if(firebase.auth().currentUser.uid == desafio.jugador)
+									{
+										$ionicPopup.alert
+										({
+											title: 'Felicitaciones!! Usted ha ganado el desafío :)',
+											
+											okType: 'button-balanced'
+										});
+										
+										try
+										{
+											$cordovaNativeAudio.play('Gana');
+										}
+							
+										catch(e)
+										{
+											console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+										}
+									}
+									
+									if(firebase.auth().currentUser.uid != desafio.jugador)
+									{
+										$ionicPopup.alert
+										({
+											title: 'Suerte para la próxima!! Usted ha perdido el desafío :(',
+										
+											okType: 'button-assertive'
+										});
+									
+										try
+										{
+											$cordovaNativeAudio.play('Pierde');
+										}
+							
+										catch(e)
+										{
+											console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+										}
+									}
+									
+									
 									var usuario=respuesta;
 									
 									usuario.credito += (parseInt(desafio.valor) * 2);
@@ -163,6 +212,46 @@ angular.module('desafiosDisponibles.controllers', ['ngCordova'])
 							{
 								servicioUsuarios.BuscarPorId(desafio.creador).then(function(respuesta)
 								{              
+									if(firebase.auth().currentUser.uid == desafio.creador)
+									{
+										$ionicPopup.alert
+										({
+											title: 'Felicitaciones!! Usted ha ganado el desafío :)',
+											
+											okType: 'button-balanced'
+										});
+										
+										try
+										{
+											$cordovaNativeAudio.play('Gana');
+										}
+							
+										catch(e)
+										{
+											console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+										}
+									}
+									
+									if(firebase.auth().currentUser.uid != desafio.creador)
+									{
+										$ionicPopup.alert
+										({
+											title: 'Suerte para la próxima!! Usted ha perdido el desafío :(',
+										
+											okType: 'button-assertive'
+										});
+									
+										try
+										{
+											$cordovaNativeAudio.play('Pierde');
+										}
+							
+										catch(e)
+										{
+											console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+										}
+									}
+									
 									var usuario=respuesta;
 									
 									usuario.credito += (parseInt(desafio.valor)*2);

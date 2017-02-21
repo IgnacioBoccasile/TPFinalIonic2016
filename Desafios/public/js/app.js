@@ -36,6 +36,9 @@ angular.module('starter', [
 			$cordovaNativeAudio.preloadComplex('Correcto', 'audio/Correcto.mp3', 1, 1);
 			$cordovaNativeAudio.preloadComplex('Incorrecto', 'audio/Incorrecto.mp3', 1, 1);
 			$cordovaNativeAudio.preloadComplex('Moneda', 'audio/Moneda.mp3', 1, 1);
+			$cordovaNativeAudio.preloadComplex('Gana', 'audio/Gana.mp3', 1, 1);
+			$cordovaNativeAudio.preloadComplex('Pierde', 'audio/Pierde.mp3', 1, 1);
+			$cordovaNativeAudio.preloadComplex('Nadie', 'audio/Nadie.mp3', 1, 1);
 		}
 	});
 })
