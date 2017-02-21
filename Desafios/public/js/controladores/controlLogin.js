@@ -10,9 +10,9 @@ angular.module('login.controllers', ['ngCordova'])
   
 	$scope.loginData = {};
 	
-	$scope.loginData.username = "";
+	$scope.loginData.username = "jugadoruno@hotmail.com";
 	
-	$scope.loginData.password = "";
+	$scope.loginData.password = "123456";
 	
 	$scope.Login = function()
 	{ 
@@ -38,7 +38,7 @@ angular.module('login.controllers', ['ngCordova'])
 			
 			$timeout(function()
 			{
-				$state.go("app.crearDesafio");
+				$state.go("app.perfil");
 				
 				$ionicPopup.alert
 				({

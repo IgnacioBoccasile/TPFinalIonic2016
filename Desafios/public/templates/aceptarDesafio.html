@@ -8,11 +8,9 @@
 			<center>
 				<div style="border: 3px solid yellow;">
 					<br>
-					<h2><strong><font color="red" class="c"> Descripción: {{desafio.pregunta}} </font></strong></h2>
+					<h3><font color="white" class="c"> Crédito requerido para la apuesta:</font> <font color="green" class="c"> ${{desafio.valor}}</font></h3>
 					<br>
-					<h3><font color="red" class="c"> Valor a apostar: ${{desafio.valor}} </font></h3>
-					<br>
-					<h3><font color="red" class="c"> Saldo disponible: ${{credito}} </font></h3>
+					<h3><font color="white" class="c"> Saldo disponible: </font><font color="green" class="c"> ${{credito}}</font></h3>
 					<br>
 					<div ng-if="desafio.creador != userID">
 						<button  class="button button-dark" ng-click="AceptarDesafio()"> Aceptar Desafío </button>

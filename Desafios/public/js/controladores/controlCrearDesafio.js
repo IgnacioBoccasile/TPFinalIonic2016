@@ -1,7 +1,7 @@
-angular.module('crearDesafio.controllers', [])
-.controller('CrearDesafioCtrl', function($scope, $ionicPopup, servicioUsuarios, $state, servicioDesafios, $timeout) 
-{	
-    $scope.banderula = true;
+angular.module('crearDesafio.controllers', ['ngCordova'])
+.controller('CrearDesafioCtrl', function($scope, $ionicPopup, servicioUsuarios, $state, servicioDesafios, $timeout, $cordovaVibration, $cordovaNativeAudio) 
+{		
+	$scope.banderula = true;
 	
 	$timeout(function()
 	{
@@ -30,6 +30,16 @@ angular.module('crearDesafio.controllers', [])
 
 	$scope.Aceptar=function()
 	{
+		try
+		{
+			$cordovaVibration.vibrate(50);
+		}
+		
+		catch(e)
+		{
+			console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+		}
+		
 		var fechaFin;
 		
 		if($scope.tiempo.dias == 0 && $scope.tiempo.horas == 0 && $scope.tiempo.minutos == 0 && $scope.tiempo.segundos == 0)
@@ -38,8 +48,18 @@ angular.module('crearDesafio.controllers', [])
 			({
 				title: 'Aún no se ha definido el tiempo!!',
 				
-				okType: 'button-dark'
+				okType: 'button-assertive'
 			});
+			
+			try
+			{
+				$cordovaNativeAudio.play('Incorrecto');
+			}
+		
+			catch(e)
+			{
+				console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+			}
 			
 			return false;
 		}
@@ -67,7 +87,6 @@ angular.module('crearDesafio.controllers', [])
 			{
 				fechaFin.setSeconds(fechaFin.getSeconds() + parseInt($scope.tiempo.segundos));
 			}
-          
 		}
 
 		$scope.desafio.fechaInicio = new Date().getTime(); 
@@ -81,15 +100,47 @@ angular.module('crearDesafio.controllers', [])
 			$scope.usuario=respuesta;
 			
 			if($scope.usuario.credito < $scope.desafio.valor)
-			{
+			{		
 				$ionicPopup.alert
 				({
 					title: 'Saldo insuficiente para crear su desafío..',
 					
-					okType: 'button-dark'
+					okType: 'button-assertive'
 				});
 				
+				try
+				{
+					$cordovaNativeAudio.play('Incorrecto');
+				}
+		
+				catch(e)
+				{
+					console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+				}
+				
 				return;
+			}
+			
+			else
+			{	
+				$ionicPopup.alert
+				({
+					title: 'Desafío creado exitosamente!!',
+					
+					okType: 'button-balanced'
+				});
+				
+				try
+				{
+					$cordovaNativeAudio.play('Correcto');
+				}
+		
+				catch(e)
+				{
+					console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+				}
+				
+				$state.go('app.desafiosCreados');
 			}
 			
 			$scope.usuario.credito -= $scope.desafio.valor;
@@ -101,7 +152,8 @@ angular.module('crearDesafio.controllers', [])
 		{
 			console.log(error);
 		});
-
-		$state.go('app.desafiosCreados');
+		
+			
+		
     }
 });

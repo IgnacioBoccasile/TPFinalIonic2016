@@ -1,5 +1,5 @@
-angular.module('desafiosDisponibles.controllers', [])
-.controller('DesafiosDisponiblesCtrl', function($scope, $ionicPopup, $timeout,$state, servicioUsuarios, servicioDesafios) 
+angular.module('desafiosDisponibles.controllers', ['ngCordova'])
+.controller('DesafiosDisponiblesCtrl', function($scope, $ionicPopup, $timeout,$state, servicioUsuarios, servicioDesafios, $cordovaVibration, $cordovaNativeAudio) 
 {
 	$scope.bander = true;
 	
@@ -101,7 +101,7 @@ angular.module('desafiosDisponibles.controllers', [])
 						
 						template: 'Se le reintegra a usted el monto apostado..',
 						
-						okType: 'button-dark'
+						okType: 'button-assertive'
 					});
 				}
 			}
@@ -114,11 +114,11 @@ angular.module('desafiosDisponibles.controllers', [])
 					{
 						var confirmPopup = $ionicPopup.confirm
 						({
-							title: 'Desafio Terminado: ',
+							title: 'Tiempo del desafío terminado: ',
 							
-							template: '¿Gana el otro jugador?',
+							template: 'Presione "OK" si ha ganado el otro jugador, o "Cancel" si el ganador fue usted',
 							
-							okType: 'button-dark',
+							okType: 'button-balanced'
 						});
 
 						confirmPopup.then(function(res) 
@@ -203,6 +203,16 @@ angular.module('desafiosDisponibles.controllers', [])
 
     $scope.verDesafio = function(index)
 	{
+		try
+		{
+			$cordovaVibration.vibrate(50);
+		}
+		
+		catch(e)
+		{
+			console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+		}
+		
 		$state.go('app.aceptarDesafio', {desafio:index});
 	}
 });

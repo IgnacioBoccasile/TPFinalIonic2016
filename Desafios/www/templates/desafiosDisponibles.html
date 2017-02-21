@@ -1,4 +1,4 @@
-<ion-view view-title="Desafíos Propuestos">
+<ion-view view-title="Desafíos Disponibles">
 	<ion-content class="paddingDesafiosDisponibles">
 	<br>
 	<center>
@@ -7,19 +7,18 @@
 	<div class="animated bounceInRight" ng-if="bander==false">
 		<div ng-repeat="desafio in datos">
 			<div ng-show="!desafio.computado && desafio.disponible && desafio.creador!=userID">
-				<br>
 				<div  style="border: 3px solid yellow;">
 					<center>
 						<br>
-						<h2><strong><font color="white" class="c"> Desafío: {{desafio.pregunta}} </font></strong></h2>
+						<h2><strong><font color="white" class="c"> Desafío: </font><font color="yellow" class="c"> {{desafio.pregunta}}</font></strong></h2>
 						<br>
-						<h3><font color="green" class="c"> Valor a apostar: ${{desafio.valor}} </font></h3>
+						<h3><font color="white" class="c"> Valor a apostar: </font> <font color="green" class="c"> ${{desafio.valor}}</font></h3>
 						<br> 
 						<timer countdown="(desafio.fechaFin - DateNow) / 1000" interval="1000">
-							<font color="red" class="c"> Tiempo restante: {{days}} Días - {{hours}} Horas - {{minutes}} Minutos - {{seconds}} Segundos </h3></font>
+							<font color="white" class="c"> Tiempo restante: </font> <font color="red" class="c">{{days}} Días - {{hours}} Horas - {{minutes}} Minutos - {{seconds}} Segundos</font></h3>
 						</timer>  
 						<br><br> 
-						<button class="button button-dark" ng-click="verDesafio($index)"> Ver </button>
+						<button class="button button-dark" ng-click="verDesafio($index)"> Toque para Aceptar </button>
 						<br><br>
 					</center>
 				</div>
