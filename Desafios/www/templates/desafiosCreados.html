@@ -1,4 +1,29 @@
-<ion-view view-title="Desaf&iacute;os Cargados">
-  <ion-content class="paddingDesafiosCreados" scroll="false">
-  </ion-content>
+<ion-view view-title="Desafíos Cargados">
+	<ion-content class="paddingDesafiosCreados">
+	<br>
+	<center>
+		<ion-spinner  icon="bubbles" class="spinner spinner-energized" ng-if="bande==true" ></ion-spinner>
+	</center>
+	<div class="animated bounceInUp" ng-if="bande==false">
+		<div ng-repeat="desafio in datos">
+			<div ng-if="desafio.creador == userID">
+				<br>
+				<div style="border: 3px solid yellow;">
+					<center>
+						<br>
+						<h2><strong><font color="white" class="c"> Desafío: {{desafio.pregunta}} </font></strong></h2>
+						<br>
+						<h3><font color="green" class="c">Valor apostado: ${{desafio.valor}} </font></h3>
+						<br> 
+						<timer ng-show="desafio.disponible" countdown="(desafio.fechaFin - DateNow) / 1000" interval="1000">
+							<font color="red" class="c"> Tiempo restante: {{days}} Días - {{hours}} Horas - {{minutes}} Minutos - {{seconds}} Segundos </h3></font>
+						</timer>
+						<br><br>
+					</center>        
+				</div> 
+				<br>
+			</div>
+		</div>
+	</div>
+	</ion-content>
 </ion-view>

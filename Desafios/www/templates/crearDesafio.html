@@ -1,29 +1,25 @@
 <ion-view view-title="Crear Desafío">
-  <ion-content class="paddingCrearDesafio" scroll="false">
-  <br>
-  <center><ion-spinner  icon="bubbles" class="spinner spinner-energized" ng-if="banderula==true" ></ion-spinner></center>
-<div align="center" class="animated bounceInDown" ng-if="banderula==false">  
-<input placeholder="Escriba aquí en qué consiste su desafío.." ng-model="desafio.pregunta" style="width: 80%; text-align: center;">
-<br><br></br>
-           <font color="white" class="c">Valor en $ (10 - 100):<input type="number" min="10" max="100" value="50" ng-model="desafio.valor" name="valor"></font>
-            <font color="white" class="c">Tiempo en Días (0 - 6):<input type="number" min="0" max="6" value="0" ng-model="tiempo.dias" ></font>
-            <font color="white" class="c">Tiempo en Horas (0 - 23):<input type="number" min="0" max="23" value="0" ng-model="tiempo.horas" ></font>
-            <font color="white" class="c">Tiempo en Minutos (0 - 59):<input type="number" min="0" max="59" value="0" ng-model="tiempo.minutos" ></font>
-            <font color="white" class="c">Tiempo en Segundos (0 - 59):<input type="number" min="0" max="59" value="0" ng-model="tiempo.segundos" ></font>
-            <br></br>
-			<div ng-if="desafio.valor<101 && desafio.valor>9 && tiempo.dias==0 || tiempo.dias>0 && tiempo.dias<7">         
-              <div ng-if="tiempo.horas==0 || tiempo.horas>0 && tiempo.horas<24">
+	<ion-content class="paddingCrearDesafio" scroll="false">
+	<br>
+	<center><ion-spinner  icon="bubbles" class="spinner spinner-energized" ng-if="banderula==true" ></ion-spinner></center>
+	<div align="center" class="animated bounceInDown" ng-if="banderula==false">  
+		<input placeholder="Escriba aquí en qué consiste su desafío.." ng-model="desafio.pregunta" style="width: 80%; text-align: center;">
+		<br><br></br>
+	    <font color="white" class="c">Valor en $ (10 - 100):<input type="number" min="10" max="100" value="50" ng-model="desafio.valor" name="valor"></font>
+		<font color="white" class="c">Tiempo en Días (0 - 6):<input type="number" min="0" max="6" value="0" ng-model="tiempo.dias" ></font>
+		<font color="white" class="c">Tiempo en Horas (0 - 23):<input type="number" min="0" max="23" value="0" ng-model="tiempo.horas" ></font>
+		<font color="white" class="c">Tiempo en Minutos (0 - 59):<input type="number" min="0" max="59" value="0" ng-model="tiempo.minutos" ></font>
+		<font color="white" class="c">Tiempo en Segundos (0 - 59):<input type="number" min="0" max="59" value="0" ng-model="tiempo.segundos" ></font>
+		<br></br>
+		<div ng-if="desafio.valor<101 && desafio.valor>9 && tiempo.dias==0 || tiempo.dias>0 && tiempo.dias<7">         
+			<div ng-if="tiempo.horas==0 || tiempo.horas>0 && tiempo.horas<24">
                 <div ng-if="tiempo.minutos==0 || tiempo.minutos>0 && tiempo.minutos<60">
                     <div ng-if="tiempo.segundos==0 || tiempo.segundos>0 && tiempo.segundos<60">
-   
-                           <button class="button button-large button-dark" ng-click="Aceptar()">Generar Desafío</button>
-                         
-                  </div>
+						<button class="button button-large button-dark" ng-click="Aceptar()">Generar Desafío</button>                        
+                    </div>
                 </div>
-              </div>
-          </div>
-            
-         
-		  </div>
-  </ion-content>
+			</div>
+		</div> 
+	</div>
+	</ion-content>
 </ion-view>

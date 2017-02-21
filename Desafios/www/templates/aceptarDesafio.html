@@ -1,4 +1,25 @@
-<ion-view>
-<ion-content class="paddingAceptarDesafio" scroll="false">
-</ion-content>
+<ion-view view-title="Aceptar Desafío">
+	<ion-content class="paddingAceptarDesafio" scroll="false">
+		<br>
+		<center>
+			<ion-spinner  icon="bubbles" class="spinner spinner-energized" ng-if="bandi==true" ></ion-spinner>
+		</center>
+		<div class="animated bounceInRight" ng-if="bandi==false">
+			<center>
+				<div style="border: 3px solid yellow;">
+					<br>
+					<h2><strong><font color="red" class="c"> Descripción: {{desafio.pregunta}} </font></strong></h2>
+					<br>
+					<h3><font color="red" class="c"> Valor a apostar: ${{desafio.valor}} </font></h3>
+					<br>
+					<h3><font color="red" class="c"> Saldo disponible: ${{credito}} </font></h3>
+					<br>
+					<div ng-if="desafio.creador != userID">
+						<button  class="button button-dark" ng-click="AceptarDesafio()"> Aceptar Desafío </button>
+					</div>
+					<br>
+				</div>  
+			</center>
+		</div>
+	</ion-content>
 </ion-view>
