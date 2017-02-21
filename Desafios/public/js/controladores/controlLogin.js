@@ -1,5 +1,5 @@
-angular.module('login.controllers', [])
-.controller('LoginCtrl', function($scope, $ionicModal, $timeout,$state, servicioUsuarios) 
+angular.module('login.controllers', ['ngCordova'])
+.controller('LoginCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, $state, servicioUsuarios, $cordovaVibration, $cordovaNativeAudio) 
 {
 	$scope.unabandera = true;
   
@@ -16,6 +16,16 @@ angular.module('login.controllers', [])
 	
 	$scope.Login = function()
 	{ 
+		try
+		{
+			$cordovaVibration.vibrate(50);
+		}
+				
+		catch(e)
+		{
+			console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+		}
+		
 		$scope.Funciona = false;
 		
 		$scope.NoFunciona = false;  
@@ -29,24 +39,79 @@ angular.module('login.controllers', [])
 			$timeout(function()
 			{
 				$state.go("app.crearDesafio");
+				
+				$ionicPopup.alert
+				({
+					title: 'Bienvenido a "Desafíos"!! ya puede desplazarse libremente por la aplicación!!',
+				
+					okType: 'button-balanced'
+				});	
+				
+				try
+				{
+					$cordovaNativeAudio.play('Correcto');
+				}
+				
+				catch(e)
+				{
+					console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+				}
+					
 			}, 3000);        
 		}).catch(function(Error)
 		{
 			$scope.NoFunciona = true;
+				
+			$ionicPopup.alert
+			({
+				title: 'Error al iniciar sesión, usuario inexistente..',
+				
+				okType: 'button-assertive'
+			});	
 			
-			console.log("Error al iniciar sesión: ", Error);
+			try
+			{
+				$cordovaNativeAudio.play('Incorrecto');
+			}
+				
+			catch(e)
+			{
+				console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+			}
+			
 		});
 	}
 	
 	$scope.Acceso = function(correo, clave)
 	{
-        $scope.loginData.username  = correo;
+        try
+		{
+			$cordovaVibration.vibrate(50);
+		}
+				
+		catch(e)
+		{
+			console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+		}
+		
+		$scope.loginData.username  = correo;
 		
         $scope.loginData.password = clave;
     }
+	 
 	
 	$scope.Registro = function()
 	{
+		try
+		{
+			$cordovaVibration.vibrate(50);
+		}
+				
+		catch(e)
+		{
+			console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+		}
+		
 		var user = firebase.auth().createUserWithEmailAndPassword($scope.loginData.username,$scope.loginData.password).then(function(respuesta)
 		{
 			$scope.loginData.username="";
@@ -62,9 +127,41 @@ angular.module('login.controllers', [])
 			usuario.nombre = respuesta.email;
           
 			servicioUsuarios.Agregar(usuario);
+			
+			$ionicPopup.alert
+			({
+				title: 'Usuario registrado exitosamente!!',
+				
+				okType: 'button-balanced'
+			});	
+			
+			try
+			{
+				$cordovaNativeAudio.play('Correcto');
+			}
+				
+			catch(e)
+			{
+				console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+			}
         }).catch(function(error)
-		{
-			console.info("Error al registrar usuario: ", error);
+		{			
+			$ionicPopup.alert
+			({
+				title: 'Error al registrar, verifique que la clave tenga como mínimo seis caracteres y que el usuario no exista..',
+				
+				okType: 'button-assertive'
+			});	
+
+			try
+			{
+				$cordovaNativeAudio.play('Incorrecto');
+			}
+				
+			catch(e)
+			{
+				console.log("Vibration, NativeAudio y BarcodeScanner únicamente en celulares!!");
+			}			
         });
 	}
 });

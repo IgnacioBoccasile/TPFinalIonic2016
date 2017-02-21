@@ -15,7 +15,7 @@ angular.module('starter', [
 'creditos.service',
 'desafios.service'])
 
-.run(function($ionicPlatform) 
+.run(function($ionicPlatform, $cordovaNativeAudio) 
 {
 	$ionicPlatform.ready(function() 
 	{
@@ -29,6 +29,13 @@ angular.module('starter', [
 		if (window.StatusBar) 
 		{
 			StatusBar.styleDefault();
+		}
+		
+		if(window.plugins && window.plugins.NativeAudio)
+		{ 
+			$cordovaNativeAudio.preloadComplex('Correcto', 'audio/Correcto.mp3', 1, 1);
+			$cordovaNativeAudio.preloadComplex('Incorrecto', 'audio/Incorrecto.mp3', 1, 1);
+			$cordovaNativeAudio.preloadComplex('Moneda', 'audio/Moneda.mp3', 1, 1);
 		}
 	});
 })

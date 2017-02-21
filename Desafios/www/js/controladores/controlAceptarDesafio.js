@@ -24,7 +24,7 @@ angular.module('aceptarDesafio.controllers', [])
 			({
 				title: 'El desafío ya fue aceptado!!',
 				
-				okType: 'button-dark',
+				okType: 'button-dark'
 			});
 			
 			$state.go('app.desafiosDisponibles');
