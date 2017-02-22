@@ -1,8 +1,12 @@
-angular.module('starter', ['ionic', 
-'ngCordova', 
-'starter.controllers'])
+angular.module('starter', [
+'ionic', 
+'ngCordova',
+'autor.controllers',
+'login.controllers',
+'menu.controllers',
+'usuarios.service'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaNativeAudio) {
   $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -11,7 +15,15 @@ angular.module('starter', ['ionic',
     }
     if (window.StatusBar) {
       StatusBar.styleDefault();
-    }
+    }	
+	
+	if(window.plugins && window.plugins.NativeAudio)
+	{ 
+		$cordovaNativeAudio.preloadComplex('Good', 'audio/Good.wav', 1, 1);
+		$cordovaNativeAudio.preloadComplex('Bad', 'audio/Bad.mp3', 1, 1);
+		$cordovaNativeAudio.preloadComplex('Coins', 'audio/Coins.mp3', 1, 1);
+		$cordovaNativeAudio.preloadComplex('Intro', 'audio/Intro.mp3', 1, 1);
+		}
   });
 })
 
@@ -22,45 +34,34 @@ angular.module('starter', ['ionic',
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    controller: 'MenuCtrl'
   })
+  .state('login', 
+	{
+		url: '/login',
+		
+		templateUrl: 'templates/login.html',
+		
+		controller: 'LoginCtrl',
+		
+		cache: false  
+	})
+  .state('app.autor', 
+	{
+		url: '/autor',
+		
+		views: 
+		{
+			'menuContent': 
+			{
+				templateUrl: 'templates/autor.html',
+				
+			controller: 'AutorCtrl'
+			}
+		}
+    });
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
+  
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
-
-  $urlRouterProvider.otherwise('/app/playlists');
+	$urlRouterProvider.otherwise('/login');
 });

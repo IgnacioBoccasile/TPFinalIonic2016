@@ -1,25 +1,44 @@
-<ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Login</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
-    </div>
-  </ion-header-bar>
-  <ion-content>
-    <form ng-submit="doLogin()">
+<div class="fondoLogin">
+</br>
+<center><ion-spinner  icon="ios" class="spinner spinner-energized" ng-if="unabandera==true" ></ion-spinner></center>
+<div ng-if="unabandera==false">
+<div class="animated bounceInRight">
+    
+  <div align="center"><img src="img/ELCANDADO.png" width="50" height="50"></img><h4><font color="white">COMPLETE LOS CAMPOS PARA CONTINUAR!!</font></h4></div>
+  </div>
+  </br>
+  <div class="animated bounceInLeft">
+  <form id="FormLogin" name="FormLogin" ng-if="!Funciona" enctype="multipart/form-data" novalidate>
       <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
+        <label class="item item-input" align="center">
+          <span class="input-label"><img src="img/Username.png" width="20" height="20"></img><br>Usuario</span>
+          <input name="username" type="email" ng-model="loginData.username" value="" required> 
+          <span ng-if="!FormLogin.username.$invalid">✔&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+       
         </label>
         <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
+          <span class="input-label"><img src="img/Clave.png" width="20" height="20"></img><br>Clave</span>
+          <input  name="password" type="password" ng-model="loginData.password" value="" required> 
+          <span ng-if="!FormLogin.password.$invalid">✔&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+          <br>
         </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
-        </label>
+
+      <label class="item">
+        <button ng-if="!FormLogin.$invalid" ng-click="Login()" class="botonLogin"><div align="center"><img src="img/CandadoLogin.png" width="20" height="20"></img> &nbsp Iniciar Sesión &nbsp <img src="img/CandadoLogin.png" width="20" height="20"></img></div></button>
+      </label><br>
+    <center><ion-spinner  icon="ios" class="spinner spinner-energized" ng-if="Funciona==false && NoFunciona==false" ></ion-spinner></center><br>
+             
+
+    
+      <div >
+       <input type="button" class="button button-dark" value="Jugador 1"  ng-click="Acceso('primerjugador@hotmail.com', '123456')">
+	   <input type="button" class="button button-positive" value="Registrarse" ng-if="!FormLogin.$invalid" ng-click="Registro()">
+        <input type="button" class="button button-dark" value="Jugador 2"  ng-click="Acceso('segundojugador@hotmail.com', '123456')">
+		
       </div>
-    </form>
-  </ion-content>
-</ion-modal-view>
+	  </form>
+
+  </div>
+  </div>
+  </div>
+</div>
