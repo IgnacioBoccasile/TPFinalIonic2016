@@ -5,6 +5,8 @@ angular.module('starter', [
 'login.controllers',
 'menu.controllers',
 'perfil.controllers',
+'cargarCredito.controllers',
+'juego.controllers',
 'usuarios.service',
 'creditos.service'])
 
@@ -74,6 +76,36 @@ angular.module('starter', [
 				templateUrl: 'templates/perfil.html',
 				
 				controller: 'PerfilCtrl'
+			}
+		}
+    })
+	
+	.state('app.cargarCredito', 
+	{
+		url: '/cargarCredito',
+		
+		views: 
+		{
+			'menuContent': 
+			{
+				templateUrl: 'templates/cargarCredito.html',
+				
+				controller: 'CargarCreditoCtrl'
+			}
+		}
+    })
+	
+	.state('app.juego', 
+	{
+		url: '/juego',
+		
+		views: 
+		{
+			'menuContent': 
+			{
+				templateUrl: 'templates/juego.html',
+				
+				controller: 'JuegoCtrl'
 			}
 		}
     });

@@ -1,6 +1,6 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
-    <ion-nav-bar class="bar-positive">
+    <ion-nav-bar class="bar-dark">
       <ion-nav-back-button>
       </ion-nav-back-button>
 
@@ -13,13 +13,19 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left" class="custom">
-    <ion-header-bar class="bar-positive">
+    <ion-header-bar class="bar-dark">
       <h1 class="title">Menú</h1>
     </ion-header-bar>
     <ion-content scroll="false">
       <ion-list>
         <ion-item menu-close ng-click="Logout()">
 			<div align="center"><img src="img/Candado.png" width="20" height="20"></img> &nbsp Cerrar Sesión &nbsp <img src="img/Candado.png" width="20" height="20"></img></div>
+        </ion-item>
+		<ion-item menu-close href="#/app/juego">
+			<div align="center"><img src="img/Juego.png" width="20" height="20"></img> &nbsp Jugar &nbsp <img src="img/Juego.png" width="20" height="20"></img></div>
+        </ion-item>
+		<ion-item menu-close href="#/app/cargarCredito">
+			<div align="center"><img src="img/Dinero.png" width="20" height="20"></img> &nbsp Cargar Crédito &nbsp <img src="img/Dinero.png" width="20" height="20"></img></div>
         </ion-item>
 		<ion-item menu-close href="#/app/perfil">
 			<div align="center"><img src="img/Calavera.png" width="20" height="20"></img> &nbsp Datos del Perfil &nbsp <img src="img/Calavera.png" width="20" height="20"></img></div>
@@ -28,6 +34,8 @@
 			<div align="center"><img src="img/Pluma.png" width="20" height="20"></img> &nbsp Datos del Autor &nbsp <img src="img/Pluma.png" width="20" height="20"></img></div>
         </ion-item>
       </ion-list>
+	  <br>
+	  <div align="center"><img src="img/Minifondo.jpg" width="150" height="150"></img></div>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>

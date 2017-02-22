@@ -38,7 +38,7 @@ angular.module('login.controllers', ['ngCordova'])
 			
 			$timeout(function()
 			{
-				$state.go("app.autor");
+				$state.go("app.perfil");
 				
 				$ionicPopup.alert
 				({
