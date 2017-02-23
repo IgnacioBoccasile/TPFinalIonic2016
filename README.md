@@ -16,12 +16,6 @@ Hosting: https://batallanavaltp.firebaseapp.com /
 ID para Ionic View: 4e9cd330
 
 # Códigos QR para "Cargar Crédito":
-<table style="width: 100%;">
-<tbody>
-<tr>
-<td style="border: 1px solid black; text-align: center;"><img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=1" alt="100" border="0" />&nbsp;<strong>30 cr&eacute;ditos</strong></td>
-<td style="border: 1px solid black; text-align: center;"><img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=2" alt="200" border="0" /><strong>&nbsp;50 cr&eacute;ditos</strong></td>
-<td style="border: 1px solid black; text-align: center;"><img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=3" alt="500" border="0" /><strong>&nbsp;100 cr&eacute;ditos</strong></td>
-</tr>
-</tbody>
-</table>
+<img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=1" alt="100" border="0"/>
+<img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=2" alt="200" border="0"/>
+<img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=3" alt="500" border="0"/>
