@@ -5,7 +5,8 @@ Juegos Online: Desafíos / Batalla Naval
 Curso: 4°A /
 Legajo: 103482 /
 Apellido: Boccasile /
-Nombre: Ignacio Nahuel.
+Nombre: Ignacio Nahuel /
+Email: ignacioboccasile@hotmail.com
 
 # Cómo Acceder a "Desafíos":
 Hosting: https://desafiostp.firebaseapp.com /
