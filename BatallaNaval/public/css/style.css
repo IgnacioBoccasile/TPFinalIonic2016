@@ -33,8 +33,15 @@
     background-size: cover;
 }
 
-.paddingJuego{
-	background-image: url(FondoJuego.jpg);
+.paddingCrearBatalla{
+	background-image: url(FondoCrearBatalla.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.paddingBatallasDisponibles{
+	background-image: url(FondoBatallasDisponibles.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;

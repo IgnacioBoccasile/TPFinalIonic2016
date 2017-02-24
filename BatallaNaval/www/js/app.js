@@ -6,9 +6,11 @@ angular.module('starter', [
 'menu.controllers',
 'perfil.controllers',
 'cargarCredito.controllers',
-'juego.controllers',
+'crearBatalla.controllers',
+'batallasDisponibles.controllers',
 'usuarios.service',
-'creditos.service'])
+'creditos.service',
+'batallas.service'])
 
 .run(function($ionicPlatform, $cordovaNativeAudio) {
   $ionicPlatform.ready(function() {
@@ -95,17 +97,32 @@ angular.module('starter', [
 		}
     })
 	
-	.state('app.juego', 
+	.state('app.crearBatalla', 
 	{
-		url: '/juego',
+		url: '/crearBatalla',
 		
 		views: 
 		{
 			'menuContent': 
 			{
-				templateUrl: 'templates/juego.html',
+				templateUrl: 'templates/crearBatalla.html',
 				
-				controller: 'JuegoCtrl'
+				controller: 'CrearBatallaCtrl'
+			}
+		}
+    })
+	
+	.state('app.batallasDisponibles', 
+	{
+		url: '/batallasDisponibles',
+		
+		views: 
+		{
+			'menuContent': 
+			{
+				templateUrl: 'templates/batallasDisponibles.html',
+				
+				controller: 'BatallasDisponiblesCtrl'
 			}
 		}
     });

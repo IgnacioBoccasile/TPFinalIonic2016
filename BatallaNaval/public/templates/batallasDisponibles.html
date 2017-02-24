@@ -1,0 +1,45 @@
+<ion-view view-title="Batallas Disponibles">
+	<ion-content class="paddingBatallasDisponibles">
+	<br>
+	<center>
+		<ion-spinner  icon="ios" class="spinner spinner-energized" ng-if="bander==true" ></ion-spinner>
+	</center>
+	<div class="animated bounceInUp" ng-if="bander==false">
+	<div ng-repeat="batalla in datos">
+	<div  style="border: 3px solid yellow;">
+	<center>
+	<br>
+	<h2><strong><font color="white" class="c"> Valor de la apuesta: </font><font color="green" class="c"> ${{batalla.valor}}</font></strong></h2>
+	<br>
+	<h2><strong><font color="white" class="c"> Saldo disponible: </font><font color="green" class="c"> ${{credito}}</font></strong></h2>
+	<br>
+	<ion-list>
+		<div class="input-label" style="width: 50%; text-align: center; margin: auto;">
+		<table style="width: 50%; text-align: center; margin: auto;">
+			<tr>
+				<td>
+				  <input type="radio" name= "elegido" class="button button-assertive"></td>
+				<td>
+				  <input type="radio" name="elegido" class="button button-assertive"></td><tr>
+				<td>
+				  <input type="radio" name="elegido" class="button button-assertive"></td>
+				<td>
+				  <input type="radio" name="elegido" class="button button-assertive"></td></tr>
+			</tr>
+		  </table>
+		  </div>
+		</ion-list>
+		<br><br>
+		<div>         
+			
+		<button class="button button-large button-dark" ng-click="jugar()">Jugar</button>                        
+
+		</div> 
+		<br><br>
+		</center>
+		</div>
+	</div>
+	</div>
+	
+	</ion-content>
+</ion-view>
