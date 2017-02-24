@@ -33,6 +33,8 @@ ID para Ionic View: 4e9cd330
  - [X] Traer y modificar datos de Firebase
  - [X] Funcionalidad de Desafíos
  - [X] Manejo de Timer
- - [X] Ícono y splash generados
+ - [X] Íconos y splashs generados
  - [X] Hosting de ambas aplicaciones
  - [X] Ionic View de ambas amplicaciones
+ - [X] Crear batalla naval y mostrarlas a otros jugadores
+ - [X] Uso de range para definir apuesta
