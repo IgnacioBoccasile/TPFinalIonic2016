@@ -17,6 +17,7 @@
 						<timer ng-show="desafio.disponible" countdown="(desafio.fechaFin - DateNow) / 1000" interval="1000">
 							<font color="white" class="c"> Tiempo restante: </font> <font color="red" class="c">{{days}} Días - {{hours}} Horas - {{minutes}} Minutos - {{seconds}} Segundos</font></h3>
 						</timer>
+						<div ng-show="!desafio.disponible"><font color="red" class="c">Computado</font></div>
 						<br><br>
 					</center>        
 				</div> 
