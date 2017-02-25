@@ -32,9 +32,9 @@ ID para Ionic View: 4e9cd330
  - [X] Generar códigos QR con el monto correspondiente
  - [X] Traer y modificar datos de Firebase
  - [X] Funcionalidad de Desafíos
+ - [X] Funcionalidad de Batalla Naval
  - [X] Manejo de Timer
  - [X] Íconos y splashs generados
  - [X] Hosting de ambas aplicaciones
  - [X] Ionic View de ambas amplicaciones
- - [X] Crear batalla naval y mostrarlas a otros jugadores
- - [X] Uso de range para definir apuesta
+ - [X] Uso de range y radio buttons para definir apuestas en batallas navales.
