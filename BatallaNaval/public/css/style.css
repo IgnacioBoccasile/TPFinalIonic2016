@@ -40,8 +40,22 @@
     background-size: cover;
 }
 
+.paddingBatallasCreadas{
+	background-image: url(FondoBatallasCreadas.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
 .paddingBatallasDisponibles{
 	background-image: url(FondoBatallasDisponibles.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.paddingJugarBatalla{
+	background-image: url(FondoJugarBatalla.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;

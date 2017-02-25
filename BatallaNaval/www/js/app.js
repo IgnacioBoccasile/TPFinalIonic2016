@@ -1,5 +1,6 @@
 angular.module('starter', [
-'ionic', 
+'ionic',
+'timer', 
 'ngCordova',
 'autor.controllers',
 'login.controllers',
@@ -7,7 +8,9 @@ angular.module('starter', [
 'perfil.controllers',
 'cargarCredito.controllers',
 'crearBatalla.controllers',
+'batallasCreadas.controllers',
 'batallasDisponibles.controllers',
+'jugarBatalla.controllers',
 'usuarios.service',
 'creditos.service',
 'batallas.service'])
@@ -112,6 +115,21 @@ angular.module('starter', [
 		}
     })
 	
+	.state('app.batallasCreadas', 
+	{
+		url: '/batallasCreadas',
+		
+		views: 
+		{
+			'menuContent': 
+			{
+				templateUrl: 'templates/batallasCreadas.html',
+				
+				controller: 'BatallasCreadasCtrl'
+			}
+		}
+    })
+	
 	.state('app.batallasDisponibles', 
 	{
 		url: '/batallasDisponibles',
@@ -125,7 +143,22 @@ angular.module('starter', [
 				controller: 'BatallasDisponiblesCtrl'
 			}
 		}
-    });
+	})
+  
+	.state('app.jugarBatalla', 
+	{
+		url: '/batallaJugar/:batalla',
+		
+		views: 
+		{
+			'menuContent': 
+			{
+				templateUrl: 'templates/jugarBatalla.html',
+				
+				controller:'JugarBatallaCtrl'
+			}
+		}
+	});
 
   
 

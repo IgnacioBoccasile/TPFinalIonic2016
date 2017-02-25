@@ -1,27 +1,37 @@
 angular.module('batallasDisponibles.controllers', ['ngCordova'])
-.controller('BatallasDisponiblesCtrl', function($scope, $ionicPopup, $timeout, $state, $cordovaVibration, servicioUsuarios) 
+.controller('BatallasDisponiblesCtrl', function($scope, $ionicPopup, $timeout,$state, servicioUsuarios, servicioBatallas, $cordovaVibration, $cordovaNativeAudio) 
 {
 	$scope.bander = true;
-	
-	$scope.credito;
 	
 	$timeout(function()
 	{
 		$scope.bander = false;
 	}, 3000);        
-	
+	 
 	$scope.datos=[];
+	
+	$scope.usuario = {};
+	
+	$scope.credito = 0;
+	
+	$scope.DateNow = new Date().getTime();
 	
 	$scope.userID = firebase.auth().currentUser.uid;
 	
-	servicioUsuarios.BuscarPorId($scope.userID).then(function(respuesta)
+	var id = firebase.auth().currentUser.uid;
+	
+	servicioUsuarios.BuscarPorId(id).then(function(respuesta)
 	{
-		var usuario=respuesta;
-		$scope.credito = usuario.credito;
-	}, function(error)
+		$scope.usuario=respuesta;
+		
+		if($scope.usuario)
+		{
+			$scope.credito = $scope.usuario.credito;
+		}  
+	},function(error)
 	{
-		console.log(error); 
-	})         
+		console.log(error);
+	});
 
 	try
 	{
@@ -35,10 +45,15 @@ angular.module('batallasDisponibles.controllers', ['ngCordova'])
     
 				var id=snapshot.key;
         
-				if(batalla.creador != $scope.userID)
+				if(!batalla.computada && ((batalla.fechaFin - $scope.DateNow) / 1000)<=0)
 				{
-					$scope.datos.push(batalla);	
-				}					 
+					Batalla(batalla, id); 
+				}
+				
+				else
+				{
+					$scope.datos.push(batalla);
+				}  
 			});
 		}); 
 	}
@@ -47,22 +62,215 @@ angular.module('batallasDisponibles.controllers', ['ngCordova'])
 	{
 		$ionicPopup.alert
 		({
-			title: 'Por favor, revise su conexiÃ³n..',
+			title: 'Por favor, revise su conexión..',
 			
             okType: 'button-assertive'
 		});
 	}
-	
-	$scope.jugar = function()
+
+	function Batalla(batalla, id)
+	{
+		if(!batalla.computada && ((batalla.fechaFin - $scope.DateNow) / 1000)<=0)
+		{
+			if(batalla.jugador == '') 
+			{
+				servicioUsuarios.BuscarPorId(batalla.creador).then(function(respuesta)
+				{
+					var usuario=respuesta;
+					
+					usuario.credito += parseInt(batalla.valor);
+					
+					servicioUsuarios.Modificar(usuario);
+					
+					batalla.disponible=false;
+					
+					batalla.computada=true;
+					
+					var desf = firebase.database().ref().child('Batallas/' + id);
+					
+					desf.set( { creador: batalla.creador, 
+					
+								disponible: false,
+								
+								computada: true,
+								jugador: batalla.jugador,
+								
+								valor: batalla.valor,
+								
+								ganador: batalla.creador,
+								
+								fechaInicio: batalla.fechaInicio,
+								
+								fechaFin: batalla.fechaFin,
+								
+								posicionCorrecta: batalla.posicionCorrecta,
+								
+								posicionElegida: batalla.posicionElegida
+					}, function(error)
+					{
+						console.log(error); 
+                    });          
+				})
+         
+				if(firebase.auth().currentUser.uid == batalla.creador)
+				{
+					$ionicPopup.alert
+					({
+						title: 'Nadie ha jugado la batalla, se le reintegra a usted el monto apostado..',
+						
+						okType: 'button-assertive'
+					});
+					
+					try
+					{
+						$cordovaNativeAudio.play('Bad');
+					}
+		
+					catch(e)
+					{
+						console.log("Vibration, NativeAudio y BarcodeScanner en celulares!!");
+					}
+				}
+			}
+			
+			else
+			{
+				if(batalla.jugador)
+				{
+					if(firebase.auth().currentUser.uid == batalla.creador)
+					{
+						servicioUsuarios.BuscarPorId(batalla.creador).then(function(respuesta)
+						{
+							if(batalla.posicionElegida != batalla.posicionCorrecta)
+							{
+								$ionicPopup.alert
+								({
+									title: 'Felicitaciones!! Su oponente no ha podido hundir su nave :)',
+									
+									okType: 'button-positive'
+								});
+								
+								try
+								{
+									$cordovaNativeAudio.play('Good');
+								}
+					
+								catch(e)
+								{
+									console.log("Vibration, NativeAudio y BarcodeScanner en celulares!!");
+								}
+								
+								var usuario=respuesta;
+							
+							usuario.credito += (parseInt(batalla.valor) * 2);
+							
+							servicioUsuarios.Modificar(usuario);
+							
+							var desf = firebase.database().ref().child('Batallas/' + id);
+							
+							desf.set( { creador: batalla.creador,
+							
+										disponible: false,
+										
+										computada: true,
+										
+										jugador: batalla.jugador,
+										
+										valor: batalla.valor,
+										
+										ganador : batalla.jugador,
+										
+										fechaInicio: batalla.fechaInicio,
+										
+										fechaFin: batalla.fechaFin,
+										
+										posicionCorrecta: batalla.posicionCorrecta,
+										
+										posicionElegida: batalla.posicionElegida
+							}, function(error)
+							{
+								console.log(error); 
+							}); 
+							}
+							
+							if((batalla.posicionElegida != "Ninguna") && (batalla.posicionElegida == batalla.posicionCorrecta))
+							{
+								$ionicPopup.alert
+								({
+									title: 'Mala suerte!! Su oponente ha hundido su nave :(',
+								
+									okType: 'button-assertive'
+								});
+							
+								try
+								{
+									$cordovaNativeAudio.play('Bad');
+								}
+					
+								catch(e)
+								{
+									console.log("Vibration, NativeAudio y BarcodeScanner en celulares!!");
+								}
+								
+								servicioUsuarios.BuscarPorId(batalla.jugador).then(function(r)
+								{
+									var user = r;
+									
+									user.credito += (parseInt(batalla.valor) * 2);
+							
+									servicioUsuarios.Modificar(user);	
+								})
+								
+								var usuario=respuesta;
+							
+							var desf = firebase.database().ref().child('Batallas/' + id);
+							
+							desf.set( { creador: batalla.creador,
+							
+										disponible: false,
+										
+										computada: true,
+										
+										jugador: batalla.jugador,
+										
+										valor: batalla.valor,
+										
+										ganador : batalla.jugador,
+										
+										fechaInicio: batalla.fechaInicio,
+										
+										fechaFin: batalla.fechaFin,
+										
+										posicionCorrecta: batalla.posicionCorrecta,
+										
+										posicionElegida: batalla.posicionElegida
+							}, function(error)
+							{
+								console.log(error); 
+							}); 
+							}		
+							          
+						})
+							 		
+						
+					}
+				}
+			}
+		}
+	}
+
+    $scope.verBatalla = function(index)
 	{
 		try
 		{
 			$cordovaVibration.vibrate(50);
 		}
 		
-		catch(Exception)
+		catch(e)
 		{
 			console.log("Vibration, NativeAudio y BarcodeScanner en celulares!!");
 		}
+		
+		$state.go('app.jugarBatalla', {batalla:index});
 	}
 });

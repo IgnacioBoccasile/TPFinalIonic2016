@@ -1,0 +1,38 @@
+<ion-view view-title="Jugar Batalla">
+	<ion-content class="paddingJugarBatalla" scroll="false">
+		<br>
+		<center>
+			<ion-spinner  icon="ios" class="spinner spinner-energized" ng-if="bandi==true" ></ion-spinner>
+		</center>
+		<div class="animated bounceInRight" ng-if="bandi==false">
+			<div  style="border: 3px solid yellow;">
+			<center>
+			<br>
+			<font color="white" class="c">Seleccione el lugar donde atacar:</font>
+			<br><br>
+				<ion-list>
+				<div class="input-label" style="width: 50%; text-align: center; margin: auto;">
+				<table style="width: 50%; text-align: center; margin: auto;">
+					<tr>
+						<td ng-click="leerPosicion('Primera')">
+						  <input type="radio" name= "elegido" class="button button-assertive"></td>
+						<td ng-click="leerPosicion('Segunda')">
+						  <input type="radio" name="elegido" class="button button-assertive"></td><tr>
+						<td ng-click="leerPosicion('Tercera')">
+						  <input type="radio" name="elegido" class="button button-assertive"></td>
+						<td ng-click="leerPosicion('Cuarta')">
+						  <input type="radio" name="elegido" class="button button-assertive"></td></tr>
+					</tr>
+				  </table>
+				  </div>
+				</ion-list>
+				<br><br>
+				<div>
+						<button  class="button button-dark" ng-click="JugarBatalla()"> Apostar </button>
+				</div>
+				<br>
+			</center>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
